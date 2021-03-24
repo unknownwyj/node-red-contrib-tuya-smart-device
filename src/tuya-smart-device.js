@@ -27,7 +27,8 @@ module.exports = function (RED) {
 
         this.deviceKey = config.deviceKey;
         node.on('input', function (msg) {
-            let operation = msg.payload.operation || 'SET';
+            let operation = msg.payload.operation || '
+            ';
             delete msg.payload.operation;
             switch (operation) {
                 case "SET":
@@ -35,6 +36,9 @@ module.exports = function (RED) {
                     break;
                 case "GET":
                     tuyaDevice.get(msg.payload);
+                    break;
+                case "REFRESH":
+                    tuyaDevice.refresh(msg.payload);
                     break;
             }
         });
