@@ -27,8 +27,7 @@ module.exports = function (RED) {
 
         this.deviceKey = config.deviceKey;
         node.on('input', function (msg) {
-            let operation = msg.payload.operation || '
-            ';
+            let operation = msg.payload.operation || 'SET';
             delete msg.payload.operation;
             switch (operation) {
                 case "SET":
